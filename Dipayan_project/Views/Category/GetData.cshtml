@@ -1,0 +1,64 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using Dipayan_project.Models
+@model IPagedList<Dipayan_project.Models.Category>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>GetData</title>
+</head>
+<body>
+    
+    <div> 
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">Category ID</th>
+                    <th scope="col">Category Name</th>
+                    @Html.ActionLink("Add Product", "Add", "Product")
+                       
+                    
+                </tr>
+            </thead>
+            @foreach (var i in Model)
+            {
+
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelName => i.CategoryId, new { @class = "input-label" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelName => i.CategoryName, new { @class = "input-label" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("EDIT", "Edit", "Category", new { name = i.CategoryName }, htmlAttributes: null)
+                        </td>
+                        <td>
+                            @Html.ActionLink("DELETE", "DeleteRecord", "Category", new { name = i.CategoryName }, htmlAttributes: null)
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+
+  
+      
+           <div>
+               <b> @Html.PagedListPager(Model, page => Url.Action("GetData", new { page, @class = ".paginations .page-item" }))</b>
+           </div>
+       
+      
+         
+    </div>
+
+    
+</body>
+</html>

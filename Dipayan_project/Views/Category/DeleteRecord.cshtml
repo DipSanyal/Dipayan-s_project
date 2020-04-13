@@ -1,0 +1,52 @@
+﻿@using Dipayan_project.Models
+@model Dipayan_project.Models.Category
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>DeleteRecord</title>
+</head>
+<body>
+    <div class="form-group">
+        @using (Html.BeginForm("delete", "Category", FormMethod.Post))
+        {
+
+            <table>
+                <tr>
+                    <td>
+                       <b> @Html.LabelFor(m => m.CategoryId, new { @class = "input-label" })</b>
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.TextBoxFor(m => m.CategoryId)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>@Html.LabelFor(m => m.CategoryName, new { @class = "input-label" })</b>
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.TextBoxFor(m => m.CategoryName)
+                    </td>
+
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="DELETE" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+
+        }
+    </div>
+</body>
+</html>

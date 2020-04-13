@@ -1,0 +1,65 @@
+﻿@using Dipayan_project.Models
+@model Dipayan_project.Models.Product
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Add</title>
+</head>
+<body>
+    <div class="form-group">
+       
+        @using (Html.BeginForm("Save", "Product", FormMethod.Post))
+        {
+            
+            <table>
+                <tr>
+                    <td>
+                      <b>  @Html.LabelFor(m => m.ProductName,new { @class = "input-label" })</b>
+                    </td>
+                    <td></td>
+                    <td>
+                        @Html.EditorFor(m => m.ProductName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ProductName, "*Required", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                      <b>  @Html.Label("CategoryName", new { @class = "input-label" })</b>
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.CategoryId, ViewBag.CategoryList as SelectList)
+                        @Html.ValidationMessageFor(m => m.ProductName, "*Required", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr></tr>
+                @*<tr>
+                        <td>
+                            @Html.Label("CategoryName")
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.category.CategoryName, new SelectList(ViewBag.use1))
+                        </td>
+                    </tr>*@
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    
+                    <td>
+                        <input type="submit" value="SAVE" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>
